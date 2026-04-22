@@ -1,3 +1,5 @@
+import { TriePriority } from "./utils/triePriority.js";
+
 const search = document.getElementById("search");
 const resultsTrie = document.getElementById("resultsTrie");
 const timeTrie = document.getElementById("timeTrie");
@@ -420,3 +422,66 @@ loadAndInitWorkers();
 // Listeners para cliquear y borrar gráficos
 document.getElementById("insertDataChart").addEventListener("click", clearInsertChart);
 document.getElementById("performanceChart").addEventListener("click", clearPerformanceChart);
+
+// ==========================================
+// TIENDA CON COLA DE PRIORIDAD (CASO PRÁCTICO)
+// ==========================================
+
+const storeTrie = new TriePriority();
+const storeSearch = document.getElementById("storeSearch");
+const storeResults = document.getElementById("storeResults");
+const seasonToggles = document.getElementsByName("season");
+
+let storeCurrentSeason = "verano";
+
+seasonToggles.forEach(r => {
+  r.addEventListener("change", (e) => {
+    storeCurrentSeason = e.target.value;
+    triggerStoreSearch();
+  });
+});
+
+storeSearch.addEventListener("input", triggerStoreSearch);
+
+async function loadStoreMocks() {
+  try {
+    const res = await fetch("./mocks/store.json");
+    const products = await res.json();
+    products.forEach(p => storeTrie.insert(p.word, p.season, p.baseScore));
+  } catch(e) {
+    console.error("Error loaded store mocks", e);
+  }
+}
+
+function triggerStoreSearch() {
+  const val = storeSearch.value.trim();
+  if(!val) {
+    storeResults.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted)">Empieza a buscar para ver el impacto.</div>';
+    return;
+  }
+  
+  const suggestions = storeTrie.getSuggestions(val, storeCurrentSeason);
+  
+  if (suggestions.length === 0) {
+     storeResults.innerHTML = '<div style="padding: 1rem; text-align: center; color: var(--text-muted)">0 coincidencias encontradas.</div>';
+     return;
+  }
+
+  storeResults.innerHTML = suggestions.slice(0, 5).map(item => {
+    const boost = item.season === storeCurrentSeason ? `<div style="color:#10b981; font-size: 0.75rem;">(+100 boost temporal)</div>` : '';
+    
+    return `<div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 1px solid var(--border); padding: 0.6rem 0.5rem; transition: 0.2s;">
+      <div style="display:flex; align-items:center; gap: 0.5rem;">
+        <span style="color: var(--text); font-weight: 500">${highlightMatch(item.word, val)}</span>
+        <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px; color:var(--text-muted); background:var(--card); border: 1px solid var(--border); border-radius:4px; padding: 2px 5px;">${item.season}</span>
+      </div>
+      <div style="text-align: right;">
+        <div style="color:var(--primary-soft); font-weight:800; font-size:1rem;">★ ${item.dynamicScore} pt</div>
+        ${boost}
+      </div>
+    </div>`;
+  }).join("");
+}
+
+loadStoreMocks();
+triggerStoreSearch();

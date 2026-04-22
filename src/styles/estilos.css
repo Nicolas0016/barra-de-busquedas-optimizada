@@ -280,6 +280,52 @@ section:hover {
 #logList li {
   margin-bottom: 0.3rem;
 }
+#storeSearch {
+  width: 100%;
+  padding: 4px 2px;
+  background: transparent;
+  color: white;
+  outline: none;
+  border: none;
+}
+
+/* SEASON TOGGLES */
+.season-toggles {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.season-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  transition: 0.2s;
+  font-weight: 500;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.season-radio {
+  display: none;
+}
+
+.season-radio:checked + .season-btn {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--primary-soft);
+  color: var(--primary-soft);
+}
+
+.season-btn:hover {
+  background: var(--card-soft);
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .results-container {

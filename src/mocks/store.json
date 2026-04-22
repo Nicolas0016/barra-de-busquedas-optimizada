@@ -1,0 +1,134 @@
+[
+  { "word": "Helado de frutilla", "season": "verano", "baseScore": 28 },
+  { "word": "Helado de dulce de leche", "season": "verano", "baseScore": 32 },
+  { "word": "Helado vegano", "season": "verano", "baseScore": 22 },
+  { "word": "Hielera grande", "season": "verano", "baseScore": 18 },
+  { "word": "Hielera eléctrica", "season": "verano", "baseScore": 20 },
+  { "word": "Horno eléctrico", "season": "invierno", "baseScore": 25 },
+  { "word": "Horno pizzero", "season": "invierno", "baseScore": 30 },
+  { "word": "Horno a leña", "season": "invierno", "baseScore": 35 },
+
+  { "word": "Bufanda tejida artesanal", "season": "invierno", "baseScore": 45 },
+  { "word": "Bufanda térmica", "season": "invierno", "baseScore": 42 },
+  { "word": "Buzo deportivo", "season": "otoño", "baseScore": 20 },
+  { "word": "Buzo con capucha", "season": "otoño", "baseScore": 22 },
+  { "word": "Buzo oversize", "season": "invierno", "baseScore": 35 },
+
+  { "word": "Sombrilla plegable", "season": "verano", "baseScore": 30 },
+  { "word": "Sombrero de playa", "season": "verano", "baseScore": 28 },
+  { "word": "Sombrero elegante", "season": "otoño", "baseScore": 15 },
+
+  { "word": "Sopa casera", "season": "invierno", "baseScore": 20 },
+  { "word": "Sopa de verduras", "season": "invierno", "baseScore": 18 },
+  { "word": "Sopa de pollo", "season": "invierno", "baseScore": 22 },
+
+  {
+    "word": "Soporte para celular bici",
+    "season": "primavera",
+    "baseScore": 25
+  },
+  { "word": "Soporte para TV", "season": "todo", "baseScore": 15 },
+
+  { "word": "Gafas de sol deportivas", "season": "verano", "baseScore": 40 },
+  { "word": "Gafas retro", "season": "verano", "baseScore": 20 },
+
+  { "word": "Guantes impermeables", "season": "invierno", "baseScore": 30 },
+  { "word": "Guantes de cuero", "season": "invierno", "baseScore": 35 },
+
+  { "word": "Parrilla portátil", "season": "verano", "baseScore": 45 },
+  { "word": "Parrilla eléctrica", "season": "verano", "baseScore": 38 },
+
+  { "word": "Paraguas compacto", "season": "otoño", "baseScore": 22 },
+  { "word": "Paraguas automático", "season": "otoño", "baseScore": 28 },
+
+  { "word": "Pala multiuso", "season": "primavera", "baseScore": 10 },
+  { "word": "Pala reforzada", "season": "invierno", "baseScore": 30 },
+
+  { "word": "Pelota inflable gigante", "season": "verano", "baseScore": 20 },
+  { "word": "Pelota de fútbol", "season": "todo", "baseScore": 25 },
+
+  { "word": "Manta térmica", "season": "invierno", "baseScore": 40 },
+  { "word": "Manta decorativa", "season": "otoño", "baseScore": 18 },
+
+  { "word": "Ventilador de pie", "season": "verano", "baseScore": 35 },
+  { "word": "Ventilador portátil", "season": "verano", "baseScore": 28 },
+
+  {
+    "word": "Aire acondicionado portátil",
+    "season": "verano",
+    "baseScore": 50
+  },
+  { "word": "Aire acondicionado split", "season": "verano", "baseScore": 60 },
+
+  { "word": "Estufa eléctrica", "season": "invierno", "baseScore": 45 },
+  { "word": "Estufa a gas", "season": "invierno", "baseScore": 50 },
+
+  { "word": "Campera impermeable", "season": "otoño", "baseScore": 40 },
+  { "word": "Campera de invierno", "season": "invierno", "baseScore": 55 },
+  { "word": "Campera liviana", "season": "primavera", "baseScore": 25 },
+
+  { "word": "Zapatillas running", "season": "primavera", "baseScore": 35 },
+  { "word": "Zapatillas urbanas", "season": "todo", "baseScore": 30 },
+
+  { "word": "Protector solar FPS 50", "season": "verano", "baseScore": 45 },
+  { "word": "Protector solar infantil", "season": "verano", "baseScore": 40 },
+
+  { "word": "Repelente de mosquitos", "season": "verano", "baseScore": 35 },
+
+  { "word": "Toldo para patio", "season": "verano", "baseScore": 42 },
+  { "word": "Toldo retráctil", "season": "verano", "baseScore": 48 },
+
+  { "word": "Bicicleta de montaña", "season": "primavera", "baseScore": 50 },
+  { "word": "Bicicleta urbana", "season": "todo", "baseScore": 40 },
+
+  {
+    "word": "Termo de acero inoxidable",
+    "season": "invierno",
+    "baseScore": 38
+  },
+  { "word": "Termo chico", "season": "todo", "baseScore": 20 },
+
+  { "word": "Mate de calabaza", "season": "todo", "baseScore": 35 },
+  { "word": "Mate térmico", "season": "todo", "baseScore": 40 },
+
+  { "word": "Camping kit completo", "season": "verano", "baseScore": 50 },
+  { "word": "Carpa 4 personas", "season": "verano", "baseScore": 45 },
+  { "word": "Bolsa de dormir", "season": "invierno", "baseScore": 35 },
+
+  { "word": "Linterna LED", "season": "todo", "baseScore": 20 },
+  { "word": "Linterna recargable", "season": "todo", "baseScore": 25 },
+
+  { "word": "Mochila trekking", "season": "primavera", "baseScore": 45 },
+  { "word": "Mochila escolar", "season": "todo", "baseScore": 20 },
+
+  { "word": "Cortadora de césped", "season": "primavera", "baseScore": 50 },
+  { "word": "Regadera de jardín", "season": "primavera", "baseScore": 15 },
+
+  { "word": "Piscina inflable", "season": "verano", "baseScore": 45 },
+  { "word": "Pileta estructural", "season": "verano", "baseScore": 55 },
+
+  { "word": "Cafetera eléctrica", "season": "invierno", "baseScore": 35 },
+  { "word": "Cafetera italiana", "season": "invierno", "baseScore": 30 },
+
+  { "word": "Chocolate caliente", "season": "invierno", "baseScore": 25 },
+
+  { "word": "Batidora eléctrica", "season": "todo", "baseScore": 30 },
+  { "word": "Licuadora potente", "season": "verano", "baseScore": 35 },
+
+  { "word": "Tablet básica", "season": "todo", "baseScore": 40 },
+  { "word": "Notebook liviana", "season": "todo", "baseScore": 50 },
+
+  { "word": "Mouse gamer", "season": "todo", "baseScore": 25 },
+  { "word": "Teclado mecánico", "season": "todo", "baseScore": 35 },
+
+  { "word": "Auriculares bluetooth", "season": "todo", "baseScore": 45 },
+  { "word": "Auriculares deportivos", "season": "todo", "baseScore": 30 },
+
+  { "word": "Smartwatch deportivo", "season": "todo", "baseScore": 50 },
+
+  { "word": "Botella térmica", "season": "todo", "baseScore": 28 },
+  { "word": "Botella deportiva", "season": "todo", "baseScore": 22 },
+
+  { "word": "Silla plegable", "season": "verano", "baseScore": 30 },
+  { "word": "Mesa de camping", "season": "verano", "baseScore": 35 }
+]

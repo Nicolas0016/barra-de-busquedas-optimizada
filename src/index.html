@@ -78,7 +78,72 @@
         </div>
       </div>
     </section>
+    <!-- 📈 GRÁFICO DE RENDIMIENTO -->
+    <section class="chart-section" style="margin-top: 1.5rem">
+      <h2 class="section-title">Tiempo de Búsqueda vs Longitud de Palabra</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+        Escribe palabras de distintas longitudes para ver cómo impacta en el tiempo de procesamiento. Si escribes otra palabra de misma longitud, el punto se actualizará.
+      </p>
+      <div class="chart-container" style="position: relative; height:350px; width:100%">
+        <canvas id="performanceChart"></canvas>
+      </div>
+    </section>
 
+    <!-- 🎲 GENERADOR ALEATORIO -->
+    <section class="random-generator" style="margin-top: 1.5rem">
+      <h2 class="section-title">Generador de Palabras Aleatorias</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+        Agrega contenido de "ruido" al azar para probar los motores en situaciones extremas de alta densidad de datos. ¡Cuidado con números extremadamente altos!
+      </p>
+      
+      <div style="display: flex; gap: 1rem; align-items: center; background: var(--card-soft); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap;">
+        <input type="number" id="randomQty" placeholder="Ej: 50" min="1" max="5000" style="padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); width: 120px; font-size: 1rem; outline: none;">
+        <button id="generateBtn" style="padding: 0.6rem 1.2rem; border-radius: 8px; background: var(--primary); color: white; border: none; font-size: 1rem; font-weight: 500; cursor: pointer; transition: 0.2s;">
+          🚀 Generar e Inyectar
+        </button>
+        <span id="generateStatus" style="color: var(--primary-soft); font-size: 0.95rem; font-weight: 500;"></span>
+      </div>
+
+      <div class="chart-container" style="position: relative; height:300px; width:100%; margin-top: 1.5rem">
+        <canvas id="insertDataChart"></canvas>
+      </div>
+    </section>
+
+    <!-- 🛒 TIENDA STORY CON PRIORIDADES -->
+    <section class="store-priority" style="margin-top: 1.5rem; margin-bottom: 3rem;">
+      <h2 class="section-title">Caso Práctico: Tienda con Cola de Prioridad</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+        Un caso de uso avanzado de Trie fusionado con un sistema de pesos ponderados (Priority Queue implícito). Los productos reciben un <strong>boost masivo de prioridad (+100)</strong> si coinciden con la temporada en curso rompiendo empates base.
+        <br><br>
+        <em>Tip:</em> Escribe <strong>"Som"</strong>, <strong>"Hel"</strong>, <strong>"Gafas"</strong>, <strong>"Bu"</strong>, o <strong>"Pa"</strong> e intercambia entre Invierno / Verano en tiempo real para ver cómo el algoritmo re-ordena los resultados usando el mismo prefijo exacto.
+      </p>
+
+      <div class="season-toggles" id="seasonToggles">
+        <input type="radio" name="season" id="s-verano" value="verano" class="season-radio" checked>
+        <label for="s-verano" class="season-btn">☀️ Verano</label>
+
+        <input type="radio" name="season" id="s-otono" value="otoño" class="season-radio">
+        <label for="s-otono" class="season-btn">🍂 Otoño</label>
+
+        <input type="radio" name="season" id="s-invierno" value="invierno" class="season-radio">
+        <label for="s-invierno" class="season-btn">❄️ Invierno</label>
+
+        <input type="radio" name="season" id="s-primavera" value="primavera" class="season-radio">
+        <label for="s-primavera" class="season-btn">🌸 Primavera</label>
+      </div>
+
+      <div class="search-container" style="max-width: 100%; margin: 0 0 1rem 0;">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <input type="text" id="storeSearch" placeholder="Buscar productos (ej. Helado, Sombrero, Gafas)..." autocomplete="off" />
+      </div>
+
+      <div class="results-column" style="background: var(--card-soft); border-radius: 14px; padding: 1.2rem; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+        <div class="column-header" style="border-bottom: 2px solid var(--border); padding-bottom: 0.8rem; margin-bottom: 0.5rem;">
+           <h3 style="color: var(--text);">Top Matches (Por Prioridad)</h3>
+        </div>
+        <div id="storeResults" class="results-list" style="max-height: 350px;"></div>
+      </div>
+    </section>
     <!-- ⚙️ COMO FUNCIONA -->
     <section class="how-it-works">
       <h2 class="section-title">¿Cómo funciona el algoritmo?</h2>
@@ -130,37 +195,6 @@
           <li>Peor caso: O(1)</li>
         </ul>
         <small>b = longitud de la palabra</small>
-      </div>
-    </section>
-
-    <!-- 📈 GRÁFICO DE RENDIMIENTO -->
-    <section class="chart-section" style="margin-top: 1.5rem">
-      <h2 class="section-title">Tiempo de Búsqueda vs Longitud de Palabra</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
-        Escribe palabras de distintas longitudes para ver cómo impacta en el tiempo de procesamiento. Si escribes otra palabra de misma longitud, el punto se actualizará.
-      </p>
-      <div class="chart-container" style="position: relative; height:350px; width:100%">
-        <canvas id="performanceChart"></canvas>
-      </div>
-    </section>
-
-    <!-- 🎲 GENERADOR ALEATORIO -->
-    <section class="random-generator" style="margin-top: 1.5rem">
-      <h2 class="section-title">Generador de Palabras Aleatorias</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
-        Agrega contenido de "ruido" al azar para probar los motores en situaciones extremas de alta densidad de datos. ¡Cuidado con números extremadamente altos!
-      </p>
-      
-      <div style="display: flex; gap: 1rem; align-items: center; background: var(--card-soft); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap;">
-        <input type="number" id="randomQty" placeholder="Ej: 50" min="1" max="5000" style="padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); width: 120px; font-size: 1rem; outline: none;">
-        <button id="generateBtn" style="padding: 0.6rem 1.2rem; border-radius: 8px; background: var(--primary); color: white; border: none; font-size: 1rem; font-weight: 500; cursor: pointer; transition: 0.2s;">
-          🚀 Generar e Inyectar
-        </button>
-        <span id="generateStatus" style="color: var(--primary-soft); font-size: 0.95rem; font-weight: 500;"></span>
-      </div>
-
-      <div class="chart-container" style="position: relative; height:300px; width:100%; margin-top: 1.5rem">
-        <canvas id="insertDataChart"></canvas>
       </div>
     </section>
     

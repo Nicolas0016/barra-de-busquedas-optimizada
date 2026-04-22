@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Búsqueda Optimizada</title>
+    <!-- Adding a modern font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/estilos.css" />
+    <!-- Chart.js para visualización de métricas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <body>
+  <!-- HEADER / INPUT -->
+  <header class="top-bar">
+    <h1>Buscador Optimizado</h1>
+
+    <div class="search-container">
+      <svg
+        class="search-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>
+
+      <input
+        type="text"
+        id="search"
+        placeholder="Buscar palabras..."
+        autofocus
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="sub-info">
+      <small id="cantidad">Inicializando motores...</small>
+    </div>
+
+    <!-- NOT FOUND ACTION -->
+    <div id="addWordContainer" style="display:none; margin-top: 0.8rem; text-align: center;">
+      <button id="addWordBtn" style="padding: 0.5rem 1.2rem; border-radius: 99px; background: var(--primary); color: white; border: none; cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: background 0.2s;">
+        ➕ Agregar "<span id="addWordText"></span>" al dataset
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- 🔍 RESULTADOS -->
+    <section class="results-section">
+      <h2 class="section-title">Comparación de algoritmos</h2>
+
+      <div class="results-container">
+        <!-- TRIE -->
+        <div class="results-column">
+          <div class="column-header trie-header">
+            <h3>Trie</h3>
+            <span id="timeTrie" class="time-badge">-- ms</span>
+          </div>
+          <div id="resultsTrie" class="results-list"></div>
+        </div>
+
+        <!-- LINEAL -->
+        <div class="results-column">
+          <div class="column-header trad-header">
+            <h3>Búsqueda Lineal</h3>
+            <span id="timeTradicional" class="time-badge">-- ms</span>
+          </div>
+          <div id="resultsTradicional" class="results-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⚙️ COMO FUNCIONA -->
+    <section class="how-it-works">
+      <h2 class="section-title">¿Cómo funciona el algoritmo?</h2>
+
+      <p>
+        El <strong>Trie</strong> funciona dividiendo cada palabra en caracteres.
+        Cada nodo del árbol representa una letra, y el recorrido desde la raíz
+        forma un prefijo.
+      </p>
+
+      <ul>
+        <li>Se inserta carácter por carácter</li>
+        <li>Las palabras con prefijos iguales comparten ramas</li>
+        <li>La búsqueda sigue el camino del prefijo</li>
+      </ul>
+
+      <p>
+        Esto permite encontrar coincidencias sin recorrer todas las palabras,
+        a diferencia de la búsqueda lineal.
+      </p>
+    </section>
+
+    <!-- 📚 INFORMACIÓN -->
+    <section class="info-section">
+      <h2 class="section-title">Sobre los Tries</h2>
+
+      <div class="trie-info">
+        <h3>¿Qué es un Trie?</h3>
+        <p>
+          Es una estructura de datos en forma de árbol que permite búsquedas
+          eficientes por prefijo.
+        </p>
+
+        <h3>🚀 Ventajas</h3>
+        <ul>
+          <li>Búsqueda rápida</li>
+          <li>Ideal para autocompletar</li>
+          <li>Escala bien con datos grandes</li>
+        </ul>
+
+        <h3>⚠️ Desventajas</h3>
+        <ul>
+          <li>Alto consumo de memoria</li>
+        </ul>
+
+        <h3>⚙️ Complejidad</h3>
+        <ul>
+          <li>Promedio: O(b)</li>
+          <li>Peor caso: O(1)</li>
+        </ul>
+        <small>b = longitud de la palabra</small>
+      </div>
+    </section>
+
+    <!-- 📈 GRÁFICO DE RENDIMIENTO -->
+    <section class="chart-section" style="margin-top: 1.5rem">
+      <h2 class="section-title">Tiempo de Búsqueda vs Longitud de Palabra</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+        Escribe palabras de distintas longitudes para ver cómo impacta en el tiempo de procesamiento. Si escribes otra palabra de misma longitud, el punto se actualizará.
+      </p>
+      <div class="chart-container" style="position: relative; height:350px; width:100%">
+        <canvas id="performanceChart"></canvas>
+      </div>
+    </section>
+
+    <!-- 🎲 GENERADOR ALEATORIO -->
+    <section class="random-generator" style="margin-top: 1.5rem">
+      <h2 class="section-title">Generador de Palabras Aleatorias</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+        Agrega contenido de "ruido" al azar para probar los motores en situaciones extremas de alta densidad de datos. ¡Cuidado con números extremadamente altos!
+      </p>
+      
+      <div style="display: flex; gap: 1rem; align-items: center; background: var(--card-soft); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border); flex-wrap: wrap;">
+        <input type="number" id="randomQty" placeholder="Ej: 50" min="1" max="5000" style="padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); width: 120px; font-size: 1rem; outline: none;">
+        <button id="generateBtn" style="padding: 0.6rem 1.2rem; border-radius: 8px; background: var(--primary); color: white; border: none; font-size: 1rem; font-weight: 500; cursor: pointer; transition: 0.2s;">
+          🚀 Generar e Inyectar
+        </button>
+        <span id="generateStatus" style="color: var(--primary-soft); font-size: 0.95rem; font-weight: 500;"></span>
+      </div>
+
+      <div class="chart-container" style="position: relative; height:300px; width:100%; margin-top: 1.5rem">
+        <canvas id="insertDataChart"></canvas>
+      </div>
+    </section>
+    
+  </main>
+
+  <script src="./main.js" type="module"></script>
+</body>
+</html>
